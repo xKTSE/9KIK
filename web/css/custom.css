@@ -44,9 +44,9 @@
 }
 
 .app-ios .pageImg{
+	/* Added so slideviewer renders the image completely [TY Ben] */
 	 -webkit-transform: translate3d(0,0,0);
 }
-
 
 .app-ios .app-title{
 	background: #222222;
@@ -152,15 +152,6 @@
 .app-android .app-topbar .app-title {
 	line-height: 48px;
 	background: #292929;
-}
-
-.loader{
-	padding-top: 50%;
-	text-align: center;
-	font-style: bold;
-	font-size: 20px;
-	width: 100%;
-	color: #D6D6D6;
 }
 
 .loader{
