@@ -5,7 +5,7 @@
      <link rel="kik-icon" href="icon.png">
      
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+     <meta name="kik-more" content="nine-kik.herokuapp.com">
      <!-- Styles -->
      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400">
      <link rel="stylesheet" href="css/default.css">
@@ -20,6 +20,7 @@
      <div class="app-page" data-page="home">
           <div class="app-topbar">
                <div class="app-title">9KIK</div>
+               <div class="app-button semiright" data-target="about">About</div>
                <div class="app-button right"></div>
           </div>
 
@@ -37,11 +38,33 @@
      <div class="app-page" data-page="preview">
           <div class="app-topbar">
                <div class="app-title">Preview</div>
-               <div class="app-button semiright" data-target="home"></div>
+               <div class="app-button semiright" data-target="home">Home</div>
                <div class="app-button right"></div>
                <div class="preview-title"></div>
           </div>
           <div class="app-content">
+          </div>
+     </div>
+
+     <!-- About Page -->
+     <div class="app-page" data-page="about">
+          <div class="app-topbar">
+               <div class="app-button" data-target="home">Back</div>
+               <div class="app-title"></div>
+          </div>
+
+          <div class ="app-content">
+               <div class="app-section">
+                    <ul class="app-list">
+                       <label>About</label>
+                       <li>Welcome to the -unofficial- 9GAG RSS Feed.
+                         <p>View and share the <b>hottest</b> funny pictures with your friends!</p>
+                       </li>
+
+                       <label>Navigation</label>
+                       <li><p>Simply scroll sidewise from your current image to get to the next image!<p></li>
+                  </ul>           
+               </div>
 
           </div>
      </div>
@@ -55,6 +78,7 @@
 
      <script src="js/home.js"></script>
      <script src="js/preview.js"></script>
+     <script src="js/about.js"></script>
 
      <script src="zerver/zAPI.js"></script>
 

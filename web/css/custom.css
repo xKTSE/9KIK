@@ -29,13 +29,9 @@
 	min-height: 100%;
 	padding-bottom: 1px;
 }
-
-
 .listwrapper {
 	height: 100%;
 }
-
-
 
 .pageImg{
 	width:100%;
@@ -44,7 +40,7 @@
 }
 
 .app-ios .pageImg{
-	/* Added so slideviewer renders the image completely [TY Ben] */
+	/*fdafdsa*/
 	 -webkit-transform: translate3d(0,0,0);
 }
 
@@ -54,38 +50,52 @@
 	padding-left: 10px;
 }
 
+.app-topbar .app-button {
+	top: 0;
+	padding: 0 8px;
+	height: 100%;
+	line-height: 44px;
+	width: 15%;
+}
+
 .app-ios .app-topbar .app-button{
 	background: #222222;
-	width: 15%;
+	width: 20%;
 	text-align: center;
-	border-left: thin double #303030;
+	border-right: 1px solid #333;
+	box-shadow: -1px 0 #000 inset;
 }
+
+.app-topbar .app-button:active{
+	background: #1C1C1C;
+}
+
+
+
 
 .app-topbar .app-button.semiright{
-	background-image: url(../img/preview.png);
-	background-position:center;
-	background-repeat: no-repeat;
-	background-size: auto 40px;
-}
-
-.app-ios .app-topbar .app-button.semiright{
-	right: 20%;
-
+	top: 0;
+	right: 25%;
 }
 
 .app-android .app-topbar .app-button.semiright{
-	right: 23%;
+	top: 0;
 	text-align: center;
-	background-size: auto 40px;
+	right: 24%;
 }
 
-.app-topbar .app-button.active{
-	background: #1C1C1C;
-	background-image: url(../img/preview.png);
-	background-position:center;
-	background-repeat: no-repeat;
-	background-size: auto 40px;
+.app-ios .app-topbar .app-button.semiright{
+	border-left: 1px solid #000;
+	border-right: 1px solid #333;
+	box-shadow: -1px 0 #000 inset, 1px 0 #333 inset;
 }
+
+.app-topbar .app-button.semiright.active{
+	background: #1C1C1C;
+}
+
+
+
 
 
 .preview-title{
@@ -97,12 +107,11 @@
 	padding: 10px;
 }
 
-
-
 .app-android .preview-title{
 	padding-top: 60px;
 	background-color: black;
 }
+
 .app-topbar {
 	z-index: 3000;
 	position: relative;
@@ -112,19 +121,10 @@
 	color: #FFF;
 	font-family: helvetica;
 	font-weight: bold;
-
 }
 
 
-.app-topbar .app-button {
-	position: absolute;
-	top: 0;
-	padding: 0 8px;
-	height: 100%;
-	line-height: 44px;
-	width: 15%;
-	
-}
+
 .app-android .app-topbar .app-button {
 	line-height: 48px;
 	border-left: thin double #303030;
@@ -132,27 +132,23 @@
 }
 
 .app-topbar .app-button.right {
-	right: 0;
-	text-align: center;
 	background-image: url(../img/kik.png);
 	background-position:center;
 	background-repeat: no-repeat;
 	background-size: auto 30px;
+	border-right: none;
+	box-shadow: none
 }
 
-.app-topbar .app-title {
-	margin: 0 auto;
-	height: 100%;
-	width: 100%;
-	line-height: 44px;
-	text-align: left;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-.app-android .app-topbar .app-title {
-	line-height: 48px;
-	background: #292929;
+
+
+
+
+.loader{
+	background-image: url(../img/loader.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto 44px;
 }
 
 .app-ios .loader{
@@ -161,9 +157,24 @@
 	width: 100%;
 }
 
-.loader{
-	background-image: url(../img/loader.gif);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: auto 44px;
+
+
+.app-list li{
+	padding-top: 10px;
+	text-align: center;
+	font-size: 18px;
+	overflow: auto;
+	white-space: normal;
+	height: 100%;
+	line-height: 20px;
+
+}
+
+.app-list li p{
+	font-size: 15px;
+	padding: 15px;
+	font-weight: normal;
+}
+.app-android .app-page.preview .app-topbar{
+	background: red;
 }
