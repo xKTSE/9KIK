@@ -112,7 +112,7 @@ App.populator('home', function (page) {
 
 
 
-               slideContent.append(newPost);
+               slideContent.scrollableNode().append(newPost);
                return slideContent[0];
           }
      }
