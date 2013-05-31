@@ -76,7 +76,8 @@ App.populator('home', function (page) {
 
 
                /* the main slideViewer content */
-               var slideContent = $('<div />').addClass("listwrapper");
+               var slideContent = $('<div />')
+                    .addClass("listwrapper");
 
                /* Enable iScroll for certain devices */
                if ( App.platform === "android" && ( App.platformVersion >= 4 && App.platformVersion < 4.1 ) ) {

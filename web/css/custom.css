@@ -123,6 +123,7 @@
 	height: 100%;
 	line-height: 44px;
 	width: 15%;
+	
 }
 .app-android .app-topbar .app-button {
 	line-height: 48px;
@@ -154,9 +155,15 @@
 	background: #292929;
 }
 
+.app-ios .loader{
+	padding-top: 50%;
+	text-align: center;
+	width: 100%;
+}
+
 .loader{
-		background-image: url(../img/loader.gif);
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: auto 44px;
+	background-image: url(../img/loader.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto 44px;
 }
