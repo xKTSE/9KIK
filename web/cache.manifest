@@ -5,16 +5,16 @@ CACHE MANIFEST
 
 
 /js/app.js
-/js/dispatcher.js
 /js/photo-viewer.js
 /js/slide-viewer.js
 /js/util.js
 /js/zepto.js
+/js/about.js
 /js/home.js
 /js/preview.js
-/js/about.js
 
-/img/9gagIcon.png
+
+/img/home.png
 /img/kik.png
 /img/loader.gif
 /img/preview.png

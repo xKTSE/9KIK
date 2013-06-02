@@ -1,24 +1,39 @@
 App.populator('home', function (page) {
      var p = $(page);
 
-     /* for loader purposes */
-     var loaderElem = p.find(".app-section.loader").clone();
+     /* Button Functionality
+          1. page transition
+          2. page refresh
+      */
+     p.find('.app-button.semiright').on('click', function(){
+          App.load('about', 'fade');
+     });
 
-     /* Refresh the home page */
      p.find('.app-title').on('click', function(){
           App.load('home', 'fade');
      });
 
+
+
+
+
+     /* for loader purposes */
+     var loaderElem = p.find(".app-section.loader").clone();
+
+
+
      cards.ready(function(){
-          /* Fetch data from zerver then use it [this kind of design must be used due to the asynchronous callbacks from zerver] */
+          /* Fetch data from zerver then use it 
+          [this kind of design must be used due to the asynchronous callbacks from zerver] */
+
           zAPI.getData( function(meta, posts){
                if(posts){
-                    loadslideContent(posts);
+                    PageBuilder(posts);
                }
           });
      });
 
-     function loadslideContent(data){
+     function PageBuilder(data){
 
           /* Unreal SlideViewer
           - some maths to make slideViewer to function incoherent with topBar & titleBar;
@@ -59,6 +74,9 @@ App.populator('home', function (page) {
           */
           p.find('.titleBar').html(data[0].title);
 
+
+
+
           function source(i){
 
                /* to bypass undefined-ness; since Slideviewer loads 3 images at a time */
@@ -86,23 +104,23 @@ App.populator('home', function (page) {
                     slideContent.scrollable();
                }
 
-                    var newPost = $('<div />')
+                    var postSection = $('<div />')
                          .addClass('app-section')
                          .css('text-align', 'center')
                          .append(loaderElem.clone());
 
-                    var imgSection = $('<div />')
-                         .addClass('img-section')
+                    var imageSection = $('<div />')
+                         .addClass('image-section')
                          .css('text-align', 'center');
 
                     var img = $('<img />')
-                         .addClass('pageImg');
+                         .addClass('main-image');
 
                          /* Show the loader until images are ready to be rendered & displayed */
                          img[0].onload = function() {
-                              newPost.find(".loader").remove();
-                              imgSection.append(img);
-                              newPost.append(imgSection);
+                              postSection.find(".loader").remove();
+                              imageSection.append(img);
+                              postSection.append(imageSection);
                          };
 
                          img.attr('src', postImage);
@@ -113,8 +131,9 @@ App.populator('home', function (page) {
 
 
 
-               slideContent.scrollableNode().append(newPost);
+               slideContent.scrollableNode().append(postSection);
                return slideContent[0];
           }
      }
 });
+/* A special thanks to Ben for helping with the kinks of SlideViewer! */

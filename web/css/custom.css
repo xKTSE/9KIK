@@ -1,3 +1,7 @@
+.app-topbar .app-title{
+	font-family: 'Oswald';
+}
+
 .titleBarContainer{
 	position: relative;
 	text-align: center;
@@ -33,83 +37,15 @@
 	height: 100%;
 }
 
-.pageImg{
+.main-image{
 	width:100%;
 	-webkit-user-select: none;
 	-webkit-user-drag: none;
 }
 
-.app-ios .pageImg{
-	/*fdafdsa*/
+.app-ios .main-image{
+	/* iOS not completely rendering image */
 	 -webkit-transform: translate3d(0,0,0);
-}
-
-.app-ios .app-title{
-	background: #222222;
-	text-align: left;
-	padding-left: 10px;
-}
-
-.app-topbar .app-button {
-	top: 0;
-	padding: 0 8px;
-	height: 100%;
-	line-height: 44px;
-	width: 15%;
-}
-
-.app-ios .app-topbar .app-button{
-	background: #222222;
-	width: 20%;
-	text-align: center;
-	border-right: 1px solid #333;
-	box-shadow: -1px 0 #000 inset;
-}
-
-.app-topbar .app-button:active{
-	background: #1C1C1C;
-}
-
-
-
-
-.app-topbar .app-button.semiright{
-	top: 0;
-	right: 25%;
-}
-
-.app-android .app-topbar .app-button.semiright{
-	top: 0;
-	text-align: center;
-	right: 24%;
-}
-
-.app-ios .app-topbar .app-button.semiright{
-	border-left: 1px solid #000;
-	border-right: 1px solid #333;
-	box-shadow: -1px 0 #000 inset, 1px 0 #333 inset;
-}
-
-.app-topbar .app-button.semiright.active{
-	background: #1C1C1C;
-}
-
-
-
-
-
-.preview-title{
-	background-color: black;
-	z-index: 3000;
-	text-align: center;
-	word-wrap:break-word;
-	font-size: 17px;	
-	padding: 10px;
-}
-
-.app-android .preview-title{
-	padding-top: 60px;
-	background-color: black;
 }
 
 .app-topbar {
@@ -123,15 +59,42 @@
 	font-weight: bold;
 }
 
-
-
-.app-android .app-topbar .app-button {
-	line-height: 48px;
-	border-left: thin double #303030;
-
+.app-title{
+	text-align: left;
+	padding-left: 10px;
+	background: #222222;
 }
 
-.app-topbar .app-button.right {
+
+.app-topbar .app-button{
+	background: #222222;
+	width: 20%;
+	text-align: center;
+	border-right: 1px solid #333;
+	box-shadow: -1px 0 #000 inset;
+}
+
+.app-topbar .app-button:active{
+	background: #1C1C1C;
+}
+
+
+.app-topbar .app-button.semiright{
+	top: 0;
+	right: 25%;
+	text-align: center;
+	border-left: 1px solid #000;
+	border-right: 1px solid #333;
+	box-shadow: -1px 0 #000 inset, 1px 0 #333 inset;
+}
+}
+
+.app-topbar .app-button.semiright.active{
+	background: #1C1C1C;
+}
+
+
+.app-topbar .app-button.right.kik {
 	background-image: url(../img/kik.png);
 	background-position:center;
 	background-repeat: no-repeat;
@@ -141,7 +104,46 @@
 }
 
 
+.app-android .app-topbar .app-button {
+	padding: 0;
+}
 
+.app-android .app-topbar .app-button.semiright{
+	right: 20%;
+}
+
+.app-android .app-topbar .app-button.semiright.home{
+	background-image: url(../img/home.png);
+	background-position:center;
+	background-repeat: no-repeat;
+	background-size: auto 35px;
+}
+
+
+
+.preview-title-container{
+	position: relative;
+	text-align: center;
+	height: 44px;
+	width: 100%;
+	display: table;
+
+	font-family: "Roboto";
+	font-weight: bold;
+	
+	background-color: black;
+    word-wrap:break-word;	
+    line-height: 120%;
+}
+
+.preview-title{
+	display: table-cell;
+    vertical-align: middle;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
 
 
 .loader{
@@ -149,14 +151,10 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto 44px;
-}
-
-.app-ios .loader{
 	padding-top: 50%;
 	text-align: center;
 	width: 100%;
 }
-
 
 
 .app-list li{
@@ -167,7 +165,10 @@
 	white-space: normal;
 	height: 100%;
 	line-height: 20px;
+}
 
+.app-android .app-list li{
+	padding-top: 10px;
 }
 
 .app-list li p{
@@ -175,6 +176,5 @@
 	padding: 15px;
 	font-weight: normal;
 }
-.app-android .app-page.preview .app-topbar{
-	background: red;
-}
+
+
