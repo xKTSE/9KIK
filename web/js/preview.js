@@ -1,5 +1,9 @@
 App.populator('preview', function(page, data){
      p = $(page);
+     
+     if(App.platform === "ios" && App.platformVersion <= 5){
+          p.find('.app-topbar .app-title').css('font-family', 'helvetica');
+     }
 
      /* To make the entire page black */
      p.find('.app-content').css('background','black');

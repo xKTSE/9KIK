@@ -1,6 +1,10 @@
 App.populator('home', function (page) {
      var p = $(page);
 
+     if(App.platform === "ios" && App.platformVersion <= 5){
+          p.find('.app-topbar .app-title').css('font-family', 'helvetica');
+     }
+
      /* Button Functionality
           1. page transition
           2. page refresh
