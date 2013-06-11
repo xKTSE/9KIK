@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html manifest='cache.manifest'>
+<html>
 <head>
      <title>9KIKS</title>
      <link rel="kik-icon" href="icon.png">
      
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
           <meta name="kik-more" content="ninekiks.herokuapp.com">
-          <meta name="description" content="For quick laughs">
+          <meta name="description" content="For your quick daily laughs">
 
           <!-- Styles -->
           <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400">
@@ -21,13 +21,13 @@
           <!-- Home Page -->
           <div class="app-page" data-page="home">
                <div class="app-topbar">
-                    <div class="app-title">9KIKS</div>
-                    <div class="app-button semiright">About</div>
-                    <div class="app-button right kik"></div>
+                    <div class="app-title left">9KIKS</div>
+                    <div class="app-button semiright about">About</div>
+                    <div class="app-button right kik" style="background-image: url( img/kik.png )"></div>
                </div>
 
                <div class="app-content" data-no-scroll="true">
-                    <div class="titleBarContainer"><p class="titleBar"></p></div>
+                    <div class="title-bar-container"><p class="title-bar-text"></p></div>
 
                     <div class="wrapper">
                          <div class="app-section loader"></div>
@@ -39,9 +39,9 @@
           <!-- Preview Page -->
           <div class="app-page" data-page="preview">
                <div class="app-topbar">
-                    <div class="app-title">Preview</div>
+                    <div class="app-title left">Preview</div>
                     <div class="app-button semiright home"></div>
-                    <div class="app-button right kik"></div>
+                    <div class="app-button right kik" style= "background-image: url( img/kik.png )"></div>
 
                     <div class="preview-title-container">
                          <p class="preview-title"></p>
@@ -55,28 +55,25 @@
           <!-- About Page -->
           <div class="app-page" data-page="about">
                <div class="app-topbar">
-                    <div class="app-button">Back</div>
-                    <div class="app-title"></div>
+                    <div class="app-button back" data-back ="true">Back</div>
                </div>
 
                <div class ="app-content">
                     <div class="app-section">
                          <ul class="app-list">
                            <label>About</label>
-                              <li>Welcome to the unofficial 9GAG Viewer
-                              <p>View and share the <b>hottest</b> funny pictures with your friends!</p>
+                              <li>Welcome to the unofficial GAG Viewer
+                              <p>View and share the <b>FUNNIEST</b> images with your friends!</p>
                               </li>
 
                               <label>Navigation</label>
                               <li>
-                                   <p>Simply <b>scroll sidewise</b> from your current image to get to the next image!</p>
+                                   <p>Simply <b>SCROLL SIDEWISE</b> from your current image to get to the next image!</p>
                               </li>
 
                               <label>Refreshing</label>
                               <li>
-                                   <p>You can <b>refresh</b> this card by pressing 9KIKS</p>
-                                   <p></p>
-                                   <p><sub> For more content visit 9GAG.com </sub></p>
+                                   <p>You can <b>REFRESH</b> this card by pressing 9KIKS title</p>
                               </li>
                               
      
@@ -87,11 +84,13 @@
      </div>
 
      <!-- Javascripts -->
-     <script src="js/zepto.js"></script>  
-     <script src="js/app.js"></script>
-     <script src="js/photo-viewer.js"></script>
-     <script src="js/slide-viewer.js"></script>
+     <script src="js/libs/zepto.js"></script>  
+     <script src="js/libs/app.js"></script>
+     <script src="js/libs/photo-viewer.js"></script>
+     <script src="js/libs/slide-viewer.js"></script>
+     <script src="js/libs/analytics.js"></script>
      <script src="js/util.js"></script>
+
 
      <script src="js/home.js"></script>
      <script src="js/preview.js"></script>
@@ -101,14 +100,15 @@
 
 
      <script> 
+
      cards.ready(function(){
           if ( cards.browser){
                cards.browser.setOrientationLock('portrait');
           }
      });
 
-
      if(cards.browser && cards.browser.linkData){
+          _gaq.push(['_trackEvent', 'PageOpen', 'FromKIKMesage']);
           App.load('preview', cards.browser.linkData);
      }else{
           App.load('home');

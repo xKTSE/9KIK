@@ -2,7 +2,7 @@
 	font-family: 'Oswald';
 }
 
-.titleBarContainer{
+.title-bar-container{
 	position: relative;
 	text-align: center;
 	height: 44px;
@@ -10,7 +10,7 @@
 
 	display: table;
 	
-	background-color: #4B4B4B;
+	background-color: #333333;
 	color: #f2f2f2;
 
 	font-family: "Roboto";
@@ -20,10 +20,11 @@
     line-height: 120%;
 }
 
-.titleBar{
+
+.title-bar-text{
 	display: table-cell;
     vertical-align: middle;
-    padding-top: 7px;
+    padding-top: 6px;
     padding-bottom: 7px;
     padding-right: 5px;
     padding-left: 5px;
@@ -53,21 +54,37 @@
 	position: relative;
 	height: 44px;
 	width: 100%;
-	background: #222222;
+	background: #222;
 	color: #FFF;
 	font-family: helvetica;
 	font-weight: bold;
+
+	-webkit-box-shadow: 0 0 1px 1px black;
 }
 
-.app-title{
+.app-ios .app-topbar {
+	z-index: 3000;
+	position: relative;
+	height: 44px;
+	width: 100%;
+	background: #222;
+	color: #FFF;
+	font-family: helvetica;
+	font-weight: bold;
+	box-shadow: none;
+
+	-webkit-box-shadow: 0 0 1px 1px black;
+}
+
+.app-title.left{
 	text-align: left;
 	padding-left: 10px;
-	background: #222222;
+	background: #222;
 }
 
 
 .app-topbar .app-button{
-	background: #222222;
+	background: #222;
 	width: 20%;
 	text-align: center;
 	border-right: 1px solid #333;
@@ -95,7 +112,6 @@
 
 
 .app-topbar .app-button.right.kik {
-	background-image: url(../img/kik.png);
 	background-position:center;
 	background-repeat: no-repeat;
 	background-size: auto 30px;
@@ -117,6 +133,10 @@
 	background-position:center;
 	background-repeat: no-repeat;
 	background-size: auto 35px;
+}
+
+.app-android .app-topbar .app-button.back{
+	color: white;
 }
 
 
@@ -152,8 +172,8 @@
 	background-repeat: no-repeat;
 	background-size: auto 44px;
 	padding-top: 50%;
-	text-align: center;
-	width: 100%;
+	text-align: center;	
+	vertical-align: middle;
 }
 
 

@@ -1,20 +1,33 @@
 App.populator('preview', function(page, data){
+
      p = $(page);
      
-     if(App.platform === "ios" && App.platformVersion <= 5){
-          p.find('.app-topbar .app-title').css('font-family', 'helvetica');
+     if(App.platform === "ios"){
+     
+          p.find('.app-topbar .app-button.semiright.home').text('Home');
+
+          if(App.platformVersion <= 5){
+               p.find('.app-topbar .app-title').css('font-family', 'helvetica');
+               p.find('.app-topbar .title-bar-container').css('font-family', 'helvetica');
+          }
+
      }
 
      /* To make the entire page black */
      p.find('.app-content').css('background','black');
      p.css('background','black');
 
-     if(App.platform === 'ios'){
-          p.find('.app-topbar .app-button.semiright.home').text('Home');
-     }
+
 
      p.find('.app-button.semiright').on('click', function(){
-          App.load('home', 'fade');
+          _gaq.push(['_trackEvent', 'PageOpen', 'Home']);
+
+               if ( cards.picker && cards.picker.cancel ) {
+                    cards.picker.cancel();
+               }
+
+
+          App.load('home', 'scale-out');
      });
 
 
@@ -33,6 +46,8 @@ App.populator('preview', function(page, data){
                linkData: JSON.stringify(data)
           });
 
+          _gaq.push(['_trackEvent', 'KikContent', 'Kikked']);
+
      });
 
 
@@ -42,4 +57,10 @@ App.populator('preview', function(page, data){
           automaticTitles: false
      });
      
-});
+},
+     function (page, data) {
+          if (App.platform === 'android'){
+               cards.browser.unbindBack(handleBackButton);
+          }
+     }
+);
