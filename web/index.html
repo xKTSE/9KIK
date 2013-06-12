@@ -41,8 +41,8 @@
           <!-- Preview Page -->
           <div class="app-page" data-page="preview">
                <div class="app-topbar">
-                    <div class="app-title left">Preview</div>
-                    <div class="app-button semiright home" data-back ="true"></div>
+                    <div class="app-title"></div>
+                    <div class="app-button back" data-back ="true">Preview</div>
                     <div class="app-button right kik" style= "background-image: url( img/kik.png )"></div>
 
                     <div class="preview-title-container">
@@ -63,21 +63,26 @@
                <div class ="app-content">
                     <div class="app-section">
                          <ul class="app-list">
-                           <label>About</label>
+                           <label>ABOUT</label>
                               <li>Welcome to the unofficial GAG Viewer
                               <p>View and share the <b>FUNNIEST</b> images with your friends!</p>
                               </li>
 
-                              <label>Navigation</label>
+                              <label>NAVIGATION</label>
                               <li>
                                    <p>Simply <b>SCROLL SIDEWISE</b> from your current image to get to the next image!</p>
                               </li>
 
-                              <label>Refreshing</label>
+                              <label>REFRESHING</label>
                               <li>
-                                   <p>You can <b>REFRESH</b> this card by pressing 9KIKS title</p>
+                                   <p>You can <b>REFRESH</b> this card by pressing the <b>9KIKS</b> title</p>
                               </li>
                               
+                              <label>NETWORK CONNECTION</label>
+                              <li>
+                                   <p>If images are still loading after a long time then there might be a network error connection.</p>
+                                   <p>Please make sure you have a network connection and then refresh the card.</p>
+                              </li>
      
                     </ul>           
                </div>
@@ -102,7 +107,7 @@
 
 
      <script> 
-     App.setDefaultTransition('scale-in');
+     App.setDefaultTransition('fade');
 
      cards.ready(function(){
           if ( cards.browser){

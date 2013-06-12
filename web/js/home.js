@@ -2,7 +2,7 @@ App.populator('home', function (page) {
      var p = $(page);
 
 
-     if(App.platform === "ios" && App.platformVersion <= 5){
+     if(App.platform === "ios" && App.platformVersion < 5){
      
           p.find('.app-topbar .app-title').css('font-family', 'helvetica');
           p.find('.app-topbar .title-bar-container').css('font-family', 'helvetica');
@@ -16,14 +16,14 @@ App.populator('home', function (page) {
      p.find('.app-button.semiright.about').on('click', function(){
 
           _gaq.push(['_trackEvent', 'PageOpen', 'About']);
-          App.load('about', 'fade');
+          App.load('about' );
      
      });
 
      p.find('.app-title').on('click', function(){
      
           _gaq.push(['_trackEvent', 'PageOpen', 'Refresh']);
-          App.load('home', 'fade');
+          App.load('home' );
      
      });
 
@@ -167,7 +167,8 @@ App.populator('home', function (page) {
                          img.clickable().on('click', function(){
 
                               _gaq.push(['_trackEvent', 'PageOpen', 'ImagePreview']);
-                              App.load('preview', { data : data[slideViewer.page()] }, 'scale-in');
+                              App.load('preview', { data : data[slideViewer.page()] });
+                
                          });
 
 

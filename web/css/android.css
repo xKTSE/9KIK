@@ -1,17 +1,10 @@
-
 .app-android .app-topbar .app-button {
 	padding: 0;
+	font-family: "Roboto";
 }
 
 .app-android .app-topbar .app-button.semiright{
 	right: 20%;
-}
-
-.app-android .app-topbar .app-button.semiright.home{
-	background-image: url(../img/home.png);
-	background-position:center;
-	background-repeat: no-repeat;
-	background-size: auto 35px;
 }
 
 .app-android .app-topbar .app-button.back{

@@ -3,15 +3,14 @@ App.populator('preview', function(page, params){
 
      p = $(page);
      
-     if(App.platform === "ios"){
-     
-          p.find('.app-topbar .app-button.semiright.home').text('Home');
+     if(App.platform === 'ios'){
+          p.find('.app-button.back').text('9KIKS').css('font-family','Oswald').css('font-size','20px');
 
-          if(App.platformVersion <= 5){
+          if(App.platformVersion < 5){
                p.find('.app-topbar .app-title').css('font-family', 'helvetica');
                p.find('.app-topbar .title-bar-container').css('font-family', 'helvetica');
+               p.find('.app-topbar .app-button.back').css('border-shadow','none').css('font-family', 'helvetica');
           }
-
      }
 
      /* To make the entire page black */
@@ -21,7 +20,7 @@ App.populator('preview', function(page, params){
 
 
      if (params.fromKik) {
-          p.find('.app-button.semiright').on('click', function(){
+          p.find('.app-button.back').on('click', function(){
                _gaq.push(['_trackEvent', 'PageOpen', 'Home']);
 
                if ( cards.picker && cards.picker.cancel ) {
