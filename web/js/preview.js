@@ -1,4 +1,5 @@
-App.populator('preview', function(page, data){
+App.populator('preview', function(page, params){
+     var data = params.data;
 
      p = $(page);
      
@@ -19,16 +20,19 @@ App.populator('preview', function(page, data){
 
 
 
-     p.find('.app-button.semiright').on('click', function(){
-          _gaq.push(['_trackEvent', 'PageOpen', 'Home']);
+     if (params.fromKik) {
+          p.find('.app-button.semiright').on('click', function(){
+               _gaq.push(['_trackEvent', 'PageOpen', 'Home']);
 
                if ( cards.picker && cards.picker.cancel ) {
                     cards.picker.cancel();
                }
 
-
-          App.load('home', 'scale-out');
-     });
+               // Load home page & remove the preview page from the stack if opened from content message
+               App.load('home', App.getReverseTransition());
+               App.removeFromStack(-1);
+          });
+     }
 
 
 

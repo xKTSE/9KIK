@@ -1,0 +1,33 @@
+.app-ios .title-bar-text{
+	font-family: helvetica;
+}
+
+.app-ios .preview-title{
+	font-family: helvetica;
+}
+
+
+.app-ios .listwrapper {
+	min-height: 100%;
+	padding-bottom: 1px;
+}
+
+.app-ios .main-image{
+	/* iOS not completely rendering image */
+	 -webkit-transform: translate3d(0,0,0);
+}
+
+
+.app-ios .app-topbar {
+	z-index: 3000;
+	position: relative;
+	height: 44px;
+	width: 100%;
+	background: #222;
+	color: #FFF;
+	font-family: helvetica;
+	font-weight: bold;
+	box-shadow: none;
+
+	-webkit-box-shadow: 0 0 1px 1px black;
+}

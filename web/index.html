@@ -13,6 +13,8 @@
           <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
           <link rel="stylesheet" href="css/default.css">
           <link rel="stylesheet" href="css/custom.css">
+          <link rel="stylesheet" href="css/ios.css">
+          <link rel="stylesheet" href="css/android.css">
 
           <script src="http://cdn.kik.com/cards/0/cards.js"></script>
 
@@ -40,7 +42,7 @@
           <div class="app-page" data-page="preview">
                <div class="app-topbar">
                     <div class="app-title left">Preview</div>
-                    <div class="app-button semiright home"></div>
+                    <div class="app-button semiright home" data-back ="true"></div>
                     <div class="app-button right kik" style= "background-image: url( img/kik.png )"></div>
 
                     <div class="preview-title-container">
@@ -100,6 +102,7 @@
 
 
      <script> 
+     App.setDefaultTransition('scale-in');
 
      cards.ready(function(){
           if ( cards.browser){
@@ -109,7 +112,10 @@
 
      if(cards.browser && cards.browser.linkData){
           _gaq.push(['_trackEvent', 'PageOpen', 'FromKIKMesage']);
-          App.load('preview', cards.browser.linkData);
+          App.load('preview', {
+               fromKik : true ,
+               data    : cards.browser.linkData
+          });
      }else{
           App.load('home');
      }

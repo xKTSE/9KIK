@@ -46,7 +46,6 @@ App.populator('home', function (page) {
                if(posts){
                     PageBuilder(posts);
                }else{
-                    /* Failure state */
                     return;
                }
           });
@@ -58,7 +57,7 @@ App.populator('home', function (page) {
 
 
           /* Unreal SlideViewer
-          - some maths to make slideViewer to function incoherent with topBar & title-bar-text;
+          - some maths to make slideViewer function incoherent with app-topbar & title-bar-text;
           */
           var wrapper = page.querySelector('.wrapper');
 
@@ -72,9 +71,9 @@ App.populator('home', function (page) {
           p.find(".app-button.right.kik").click(function(){
 
                k = slideViewer.page();
-               
+
                cards.kik.send({
-                    title: data[k].title,
+                    title: decodeSpecialChars(data[k].title),
                     text: 'So funny it\'s UNREAL',
                     pic: extract(data[k].description, 'img', 'src'),
                     linkData: JSON.stringify(data[k])
@@ -137,7 +136,7 @@ App.populator('home', function (page) {
                     .addClass("listwrapper");
 
                /* Enable iScroll for certain devices */
-               if ( App.platform === "android" && ( App.platformVersion >= 4 && App.platformVersion < 4.1 ) ) {
+               if ((App.platform === 'android' && App.platformVersion >= 4) || (App.platform ==='ios' && (App.platformVersion>=5 && App.platformVersion <6))) {
                     slideContent.scrollable(true);
                } else {
                     slideContent.scrollable();
@@ -162,13 +161,13 @@ App.populator('home', function (page) {
                               postSection.append(imageSection);
                          };
 
+
                          img.attr('src', postImage);
 
                          img.clickable().on('click', function(){
 
                               _gaq.push(['_trackEvent', 'PageOpen', 'ImagePreview']);
-
-                              App.load('preview', data[slideViewer.page()], 'scale-in');
+                              App.load('preview', { data : data[slideViewer.page()] }, 'scale-in');
                          });
 
 
