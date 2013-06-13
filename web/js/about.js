@@ -6,8 +6,10 @@ App.populator('about', function (page) {
 		_gaq.push(['_trackEvent', 'PageOpen', 'Home']);
 	});
 
+	p.find('#refresh').on('click',function(){
+		App.removeFromStack(-2);
+	});
 
-     
 },
 	function (page) {
   		if (App.platform === 'android'){

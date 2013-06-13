@@ -1,3 +1,4 @@
+
 .app-topbar .app-title{
 	font-family: 'Oswald';
 	
@@ -83,7 +84,7 @@
 	text-align: center;
 	border-right: none;
 	border-left: 1px solid #000;
-	box-shadow: -1px 0 #000 inset, 1px 0 #333 inset;
+	box-shadow: 1px 0 #333 inset;
 }
 
 
@@ -133,21 +134,35 @@
 }
 
 
-.app-list li{
-	padding-top: 10px;
+.app-section p{
+	padding: 15px;
 	text-align: center;
-	font-size: 18px;
+	font-size: 25px;
 	overflow: auto;
 	white-space: normal;
 	height: 100%;
 	line-height: 20px;
 }
 
-
-.app-list li p{
+.app-section #sub-text{
 	font-size: 15px;
-	padding: 15px;
-	font-weight: normal;
 }
 
+
+
+.app-content .app-button{
+	background: #d2d2d2;
+	width: 95%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.app-content .app-button.active{
+	background: #222;
+	color: white;
+}
+
+.app-button{
+	font-weight: none;
+}
 

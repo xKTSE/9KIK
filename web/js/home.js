@@ -2,8 +2,10 @@ App.populator('home', function (page) {
      var p = $(page);
 
 
+
+
      if(App.platform === "ios" && App.platformVersion < 5){
-     
+          /* iOS 4 makes me sad */
           p.find('.app-topbar .app-title').css('font-family', 'helvetica');
           p.find('.app-topbar .title-bar-container').css('font-family', 'helvetica');
      
@@ -16,7 +18,7 @@ App.populator('home', function (page) {
      p.find('.app-button.semiright.about').on('click', function(){
 
           _gaq.push(['_trackEvent', 'PageOpen', 'About']);
-          App.load('about' );
+
      
      });
 
@@ -26,11 +28,6 @@ App.populator('home', function (page) {
           App.load('home' );
      
      });
-
-
-
-
-
 
 
      /* For loader purposes */
@@ -66,7 +63,7 @@ App.populator('home', function (page) {
           wrapper.style.height = height + "px";
           
 
-          var slideViewer = new SlideViewer(wrapper, source,{startAt: 0, length: 30});
+          var slideViewer = new SlideViewer(wrapper, source,{startAt: 0, length: data.length});
 
           p.find(".app-button.right.kik").click(function(){
 

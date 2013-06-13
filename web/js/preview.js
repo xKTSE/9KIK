@@ -1,7 +1,6 @@
 App.populator('preview', function(page, params){
      var data = params.data;
-
-     p = $(page);
+     var p = $(page);
      
      if(App.platform === 'ios'){
           p.find('.app-button.back').text('9KIKS').css('font-family','Oswald').css('font-size','20px');

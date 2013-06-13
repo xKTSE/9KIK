@@ -33,3 +33,8 @@
 
 	-webkit-box-shadow: 0 0 1px 1px black;
 }
+
+.app-ios .app-content .app-button.active{
+	background: #222;
+	color: white;
+}
