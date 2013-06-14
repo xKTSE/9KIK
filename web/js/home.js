@@ -78,11 +78,12 @@ App.populator('home', function (page) {
           - Force dat SlideViewer to set the title of the first post
           */
           p.find('.title-bar-text')
-               .html(data[0].title)
-               .on('click', function(){
-                    _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
-                    cards.browser.open(data[slideViewer.page()].link);
-               });
+               .html(data[0].title);
+
+               // .on('click', function(){
+               //      _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
+               //      cards.browser.open(data[slideViewer.page()].link);
+               // });
 
 
           function source(i){
@@ -139,7 +140,6 @@ App.populator('home', function (page) {
                               App.load('preview', { data : data[slideViewer.page()] });
                 
                          });
-
 
 
                slideContent.scrollableNode().append(postSection);
