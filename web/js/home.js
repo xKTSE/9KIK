@@ -84,7 +84,6 @@ App.populator('home', function (page) {
           slideViewer.on('flip', function(i){
                if (i >= 0){
                     _gaq.push(['_trackEvent', 'ContentSliding', 'slide']);
-
                     p.find('.title-bar-text').html(data[i].title);
                }else {
                     return;
@@ -97,13 +96,10 @@ App.populator('home', function (page) {
           */
           p.find('.title-bar-text')
                .html(data[0].title)
-               .clickable().on('click', function(){
-
-                    _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
-                    cards.browser.open(data[0].link);
-
-               });
-
+               .on('click', function(){
+                         _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
+                         cards.browser.open(data[slideViewer.page()].link);
+                    });
 
 
           function source(i){
@@ -121,11 +117,6 @@ App.populator('home', function (page) {
 
                var postImage = extract(data[i].description,'img','src');
 
-               p.find('.title-bar-text').clickable().on('click', function(){
-                         _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
-                         cards.browser.open(data[slideViewer.page()].link);
-
-               });
 
 
                /* the main slideViewer content */

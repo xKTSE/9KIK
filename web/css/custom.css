@@ -55,7 +55,7 @@
 	font-family: helvetica;
 	font-weight: bold;
 
-	-webkit-box-shadow: 0 0 1px 1px black;
+	-webkit-box-shadow: 0 1px 1px black;
 }
 
 
@@ -145,20 +145,26 @@
 }
 
 .app-section #sub-text{
-	font-size: 15px;
+	font-size: 16px;
+	padding-bottom: 40px;
 }
 
 
+
+.app-content .app-button-group{
+	margin-top: 25px;
+}
 
 .app-content .app-button{
 	background: #d2d2d2;
 	width: 95%;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	margin-bottom: 7px;
 }
 
 .app-content .app-button.active{
-	background: #222;
+	background: #333333;
 	color: white;
 }
 

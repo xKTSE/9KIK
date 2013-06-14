@@ -10,10 +10,4 @@ App.populator('about', function (page) {
 		App.removeFromStack(-2);
 	});
 
-},
-	function (page) {
-  		if (App.platform === 'android'){
-    		cards.browser.unbindBack(handleBackButton);
-		}
-	}
-);
+});
