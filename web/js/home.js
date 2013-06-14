@@ -79,7 +79,10 @@ App.populator('home', function (page) {
           */
           p.find('.title-bar-text')
                .html(data[0].title);
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
                // .on('click', function(){
                //      _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
                //      cards.browser.open(data[slideViewer.page()].link);
