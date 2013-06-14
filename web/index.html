@@ -72,8 +72,9 @@
 
      <script> 
      App.setDefaultTransition('fade');
-     cards.browser.setOrientationLock('portrait');
-     
+     if(cards.browser){
+          cards.browser.setOrientationLock('portrait');
+     }
 
      if(cards.browser && cards.browser.linkData){
           _gaq.push(['_trackEvent', 'PageOpen', 'FromKIKMesage']);
