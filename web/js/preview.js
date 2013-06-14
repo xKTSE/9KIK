@@ -3,12 +3,17 @@ App.populator('preview', function(page, params){
      var p = $(page);
      
      if(App.platform === 'ios'){
-          p.find('.app-button.back').text('9KIKS').css('font-family','Oswald').css('font-size','20px');
+          p.find('.app-button.back')
+               .text('9KIKS')
+               .css('font-family','Oswald')
+               .css('font-size','20px');
 
           if(App.platformVersion < 5){
                p.find('.app-topbar .app-title').css('font-family', 'helvetica');
                p.find('.app-topbar .title-bar-container').css('font-family', 'helvetica');
-               p.find('.app-topbar .app-button.back').css('border-shadow','none').css('font-family', 'helvetica');
+               p.find('.app-topbar .app-button.back')
+                    .css('border-shadow','none')
+                    .css('font-family', 'helvetica');
           }
      }
 
@@ -39,10 +44,10 @@ App.populator('preview', function(page, params){
      var previewTitle = data.title;
      var previewImage = extract(data.description,'img','src');
 
-     p.find(".app-button.right").click(function(){
+     p.find("#kik").click(function(){
 
           cards.kik.send({
-               title: data.title,
+               title: decodeSpecialChars(data.title),
                text: 'So funny it\'s UNREAL',
                pic: extract(data.description, 'img', 'src'),
                linkData: JSON.stringify(data)
@@ -59,10 +64,4 @@ App.populator('preview', function(page, params){
           automaticTitles: false
      });
      
-},
-     function (page, data) {
-          if (App.platform === 'android'){
-               cards.browser.unbindBack(handleBackButton);
-          }
-     }
-);
+});

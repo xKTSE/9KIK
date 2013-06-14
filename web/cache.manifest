@@ -1,20 +1,24 @@
 CACHE MANIFEST
 
-/css/custom.css
 /css/default.css
+/css/custom.css
+/css/ios.css
+/css/android.css
 
-
-/js/app.js
-/js/photo-viewer.js
-/js/slide-viewer.js
+/js/libs/zepto.js
+/js/libs/app.js
+/js/libs/photo-viewer.js
+/js/libs/slide-viewer.js
 /js/util.js
-/js/zepto.js
+
+/js/home.js
+/js/preview.js
 
 
-/img/home.png
 /img/kik.png
 /img/loader.gif
 /img/preview.png
+/img/refresh_icon.png
 
 
 NETWORK:

@@ -1,1 +1,1 @@
-web: zerver  -p web
+web: zerver --manifest=cache.manifest  -p web

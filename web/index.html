@@ -6,7 +6,7 @@
      
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
           <meta name="kik-more" content="ninekiks.herokuapp.com">
-          <meta name="description" content="For your quick daily laughs">
+          <meta name="description" content="The unofficial GAG Viewer. \n Swipe and view funny pictures wih you and your friends!">
 
           <!-- Styles -->
           <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400">
@@ -24,8 +24,8 @@
           <div class="app-page" data-page="home">
                <div class="app-topbar">
                     <div class="app-title left">9KIKS</div>
-                    <div class="app-button semiright about" data-target="about">About</div>
-                    <div class="app-button right kik" style="background-image: url( img/kik.png )"></div>
+                    <div class="app-button semiright" id="refresh" style="background-image: url( img/refresh_icon.png )"></div>
+                    <div class="app-button right" id="kik" style="background-image: url( img/kik.png )"></div>
                </div>
 
                <div class="app-content" data-no-scroll="true">
@@ -43,7 +43,7 @@
                <div class="app-topbar">
                     <div class="app-title"></div>
                     <div class="app-button back" data-back ="true">Preview</div>
-                    <div class="app-button right kik" style= "background-image: url( img/kik.png )"></div>
+                    <div class="app-button right" id="kik" style= "background-image: url( img/kik.png )"></div>
 
                     <div class="preview-title-container">
                          <p class="preview-title"></p>
@@ -51,25 +51,6 @@
 
                </div>
                <div class="app-content">
-               </div>
-          </div>
-
-          <!-- About Page -->
-          <div class="app-page" data-page="about">
-               <div class="app-topbar">
-                    <div class="app-button back" data-back ="true">Back</div>
-               </div>
-
-               <div class ="app-content">
-                    <div class="app-section">
-                         <p class="about-header"><b>The Unofficial GAG Viewer</b></h>
-                         <p id="sub-text">Scroll around to view and share funnny pictures with your friends!</p>
-                    </div>
-
-                    <div class ="app-button-group">
-                         <div class = "app-button" id="refresh" data-target="home">REFRESH APP</div>
-                    </div>
-
                </div>
           </div>
 
@@ -85,26 +66,23 @@
 
      <script src="js/home.js"></script>
      <script src="js/preview.js"></script>
-     <script src="js/about.js"></script>
 
      <script src="zerver/zAPI.js"></script>
 
 
      <script> 
      App.setDefaultTransition('fade');
-
-     cards.ready(function(){
-          if ( cards.browser){
-               cards.browser.setOrientationLock('portrait');
-          }
-     });
+     cards.browser.setOrientationLock('portrait');
+     
 
      if(cards.browser && cards.browser.linkData){
           _gaq.push(['_trackEvent', 'PageOpen', 'FromKIKMesage']);
+
           App.load('preview', {
                fromKik : true ,
                data    : cards.browser.linkData
           });
+
      }else{
           App.load('home');
      }

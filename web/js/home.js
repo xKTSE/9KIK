@@ -2,31 +2,18 @@ App.populator('home', function (page) {
      var p = $(page);
 
 
-
-
      if(App.platform === "ios" && App.platformVersion < 5){
           /* iOS 4 makes me sad */
           p.find('.app-topbar .app-title').css('font-family', 'helvetica');
           p.find('.app-topbar .title-bar-container').css('font-family', 'helvetica');
-     
      }
 
-     /* Button Functionalities
-          1. page transition
-          2. page refresh
-      */
-     p.find('.app-button.semiright.about').on('click', function(){
 
-          _gaq.push(['_trackEvent', 'PageOpen', 'About']);
 
-     
-     });
-
-     p.find('.app-title').on('click', function(){
-     
+     p.find('#refresh').on('click', function(){
           _gaq.push(['_trackEvent', 'PageOpen', 'Refresh']);
-          App.load('home' );
-     
+          App.load('home');
+          App.removeFromStack(-1);
      });
 
 
@@ -36,9 +23,7 @@ App.populator('home', function (page) {
 
 
      cards.ready(function(){
-          /* Fetch data from zerver then use it 
-          [this type of design must be used due to the asynchronous callbacks from zerver] */
-
+          /* Async callbacks */
           zAPI.getData( function(meta, posts){
                if(posts){
                     PageBuilder(posts);
@@ -50,7 +35,6 @@ App.populator('home', function (page) {
      });
 
      function PageBuilder(data){
-
 
 
           /* Unreal SlideViewer
@@ -65,8 +49,7 @@ App.populator('home', function (page) {
 
           var slideViewer = new SlideViewer(wrapper, source,{startAt: 0, length: data.length});
 
-          p.find(".app-button.right.kik").click(function(){
-
+          p.find("#kik").click(function(){
                k = slideViewer.page();
 
                cards.kik.send({
@@ -85,7 +68,7 @@ App.populator('home', function (page) {
                if (i >= 0){
                     _gaq.push(['_trackEvent', 'ContentSliding', 'slide']);
                     p.find('.title-bar-text').html(data[i].title);
-               }else {
+               }else{
                     return;
                }                 
           });
@@ -97,9 +80,9 @@ App.populator('home', function (page) {
           p.find('.title-bar-text')
                .html(data[0].title)
                .on('click', function(){
-                         _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
-                         cards.browser.open(data[slideViewer.page()].link);
-                    });
+                    _gaq.push(['_trackEvent', 'BrowserOpen', 'OpenedTitle']);
+                    cards.browser.open(data[slideViewer.page()].link);
+               });
 
 
           function source(i){
@@ -110,13 +93,11 @@ App.populator('home', function (page) {
                }
 
 
-               /* For Future References if uri & publish dat is needed:
-                    var postLink = data[i].link;
+               /* For Future References: Publish date
                     var postDate = data[i].pubDate.substr(0, data[i].pubDate.length - 14);
                */
 
                var postImage = extract(data[i].description,'img','src');
-
 
 
                /* the main slideViewer content */
