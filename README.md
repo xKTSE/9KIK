@@ -7,8 +7,9 @@ View and share pictures with your friends and family through this card!
 ### Accessing
 
 Launch from Kik Messager or from your browser!
-
-  - [ninekiks.herokuapp.com](ninekiks.herokuapp.com)
+```
+ninekiks.herokuapp.com
+```
     
 
 
