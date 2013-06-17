@@ -15,9 +15,6 @@ App.populator('home', function (page, data) {
 
 
 
-
-
-
      cards.ready(function(){
           /* Async callbacks */
           zAPI.getData(data, function(meta, posts){
@@ -29,6 +26,9 @@ App.populator('home', function (page, data) {
           });
 
      });
+
+
+
 
      function PageBuilder(posts){
           var data = [];
