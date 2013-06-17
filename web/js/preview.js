@@ -1,23 +1,25 @@
 App.populator('preview', function(page, params){
      var data = params.data;
      var p = $(page);
+
+     var previewImage;
+     var previewTitle;
+
+     var isVideo = typeof data.video !== 'undefined' ? true : false;
      
+     /* Handle iOS */
      if(App.platform === 'ios'){
-          p.find('.app-button.back')
-               .text('9KIKS')
-               .css('font-family','Oswald')
-               .css('font-size','20px');
+          p.find('.app-button.back').text('kikur');
 
           if(App.platformVersion < 5){
-               p.find('.app-topbar .app-title').css('font-family', 'helvetica');
-               p.find('.app-topbar .title-bar-container').css('font-family', 'helvetica');
-               p.find('.app-topbar .app-button.back')
-                    .css('border-shadow','none')
-                    .css('font-family', 'helvetica');
+               p.find('.app-topbar .app-button.back').css('border-shadow','none');
           }
      }
 
-     /* To make the entire page black */
+     if(App.platform === 'android' && App.platformVersion < 3){
+          p.find('.app-button.back').css('background', 'none');
+     }
+     
      p.find('.app-content').css('background','black');
      p.css('background','black');
 
@@ -31,25 +33,39 @@ App.populator('preview', function(page, params){
                     cards.picker.cancel();
                }
 
-               // Load home page & remove the preview page from the stack if opened from content message
-               App.load('home', App.getReverseTransition());
+               App.load('selector', App.getReverseTransition());
                App.removeFromStack(-1);
           });
+
+          if(isVideo === true){
+               previewImage = '../img/play_preview.png';
+          }else{
+               previewImage = data.image_file;
+          }
+
      }
 
 
 
 
      /* Main Page Builder */
-     var previewTitle = data.title;
-     var previewImage = extract(data.description,'img','src');
+     previewTitle = data.title;
+
 
      p.find("#kik").click(function(){
+
+          if(isVideo === true){
+               kikpic = '../img/play_preview.png';
+          }else if(data.image_file.indexOf('.gif') > -1){
+               kikpic = '../img/kikpic_gif.png';
+          }else{
+               kikpic = data.image_file;
+          }
 
           cards.kik.send({
                title: decodeSpecialChars(data.title),
                text: 'So funny it\'s UNREAL',
-               pic: extract(data.description, 'img', 'src'),
+               pic: kikpic,
                linkData: JSON.stringify(data)
           });
 
@@ -60,8 +76,26 @@ App.populator('preview', function(page, params){
 
      p.find('.preview-title').html(previewTitle);
 
-     var photoViewer = new PhotoViewer(page, [previewImage], {
-          automaticTitles: false
-     });
-     
+     if(isVideo === true){
+          var video = $('<img />')
+               .addClass('preview-video')
+               .attr('src', '../img/play_preview.png');
+
+          p.find('.app-content')
+               .append(video)
+               .css('text-align','center');
+
+          p.find('.preview-video').on('click', function(){
+               
+               cards.browser.open(data.video);
+          
+          });
+
+     }else{
+          previewImage = data.image_file;
+
+          var photoViewer = new PhotoViewer(page, [previewImage], {
+               automaticTitles: false
+          });
+     }
 });

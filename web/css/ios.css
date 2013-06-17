@@ -1,13 +1,4 @@
 
-.app-ios .title-bar-text{
-	font-family: helvetica;
-}
-
-.app-ios .preview-title{
-	font-family: helvetica;
-
-}
-
 
 .app-ios .listwrapper {
 	min-height: 100%;
@@ -34,7 +25,3 @@
 	-webkit-box-shadow: 0 0 1px 1px black;
 }
 
-.app-ios .app-content .app-button.active{
-	background: #222;
-	color: white;
-}

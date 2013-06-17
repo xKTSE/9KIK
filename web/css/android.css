@@ -1,6 +1,5 @@
 .app-android .app-topbar .app-button {
 	padding: 0;
-	font-family: "Roboto";
 }
 
 .app-android .app-topbar .app-button.semiright{
@@ -13,4 +12,8 @@
 
 .app-android .app-list li{
 	padding-top: 10px;
+}
+
+.app-android .app-content .app-button.nav.active{
+	color:white;
 }

@@ -1,25 +1,40 @@
 CACHE MANIFEST
 
-/css/default.css
-/css/custom.css
-/css/ios.css
-/css/android.css
+#zerver : css/main.min.css
+css/default.css
+css/custom.css
+css/ios.css
+css/android.css
+# /zerver
 
-/js/libs/zepto.js
-/js/libs/app.js
-/js/libs/photo-viewer.js
-/js/libs/slide-viewer.js
-/js/util.js
+http://cdn.kik.com/cards/0/cards.js
 
-/js/home.js
-/js/preview.js
+# zerver:js/main.min.js
+js/libs/zepto.js
+js/libs/app.js
+js/libs/photo-viewer.js
+js/libs/slide-viewer.js
+js/util.js
+js/home.js
+js/preview.js
+js/selector.js
+# /zerver
+
+//www.google-analytics.com/ga.js
 
 
-/img/kik.png
-/img/loader.gif
-/img/preview.png
-/img/refresh_icon.png
+img/kik.png
+img/loader.gif
+img/refresh_icon.png
 
+img/fb.png
+img/mb.png
+img/cb.png
+img/im.png
+img/kikpic_gif.png
+img/play_preview.png
+
+font/OpenSans-Regular.ttf
 
 NETWORK:
 *

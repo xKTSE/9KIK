@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <title>9KIKS</title>
+     <title>Kikur</title>
      <link rel="kik-icon" href="icon.png">
      
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <meta name="kik-more" content="ninekiks.herokuapp.com">
-          <meta name="description" content="The unofficial GAG Viewer. Swipe and view funny pics!">
+          <meta name="description" content="Your source of funny pictures from Failblog, Memebase and more!">
 
 
           <!-- Styles -->
-          <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400">
-          <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
+
+          <!-- zerver:css/main.min.css -->
           <link rel="stylesheet" href="css/default.css">
           <link rel="stylesheet" href="css/custom.css">
           <link rel="stylesheet" href="css/ios.css">
           <link rel="stylesheet" href="css/android.css">
+          <!-- /zerver -->
 
-          <script src="http://cdn.kik.com/cards/0/cards.js"></script>
+          
 
      </head>
      <body>
+          <div class ="app-page" data-page="selector">
+               <div class="app-content" data-no-scroll="true" id="selector">
+
+                    <div class="main-title">
+                         <p>kikur</p>
+                         <sub>Select. Swipe. Smile.</sub>
+                    </div>
+
+
+                    <table id="button-group">
+                         <tr>
+                         <td><div class="app-button nav" id="fb">Failblog</div></td>
+                         <td><div class="app-button nav" id="mb">Memebase</div></td>
+                         </tr>
+                         <tr>
+                         <td><div class="app-button nav" id="cb">Cheezburger</div></td>
+                         <td><div class="app-button nav" id="im">Imgur</div></td>
+                         </tr>
+                    </table>
+               </div>
+          </div>
+
+
+
           <!-- Home Page -->
           <div class="app-page" data-page="home">
                <div class="app-topbar">
-                    <div class="app-title left">9KIKS</div>
-                    <div class="app-button semiright" id="refresh" style="background-image: url( img/refresh_icon.png )"></div>
-                    <div class="app-button right" id="kik" style="background-image: url( img/kik.png )"></div>
+                    <div class="app-button back" data-back ="true">kikur</div>
+                    <div class="app-button semiright" id="refresh"></div>
+                    <div class="app-button right" id="kik"></div>
                </div>
 
                <div class="app-content" data-no-scroll="true">
@@ -44,7 +68,7 @@
                <div class="app-topbar">
                     <div class="app-title"></div>
                     <div class="app-button back" data-back ="true">Preview</div>
-                    <div class="app-button right" id="kik" style= "background-image: url( img/kik.png )"></div>
+                    <div class="app-button right" id="kik"></div>
 
                     <div class="preview-title-container">
                          <p class="preview-title"></p>
@@ -56,19 +80,21 @@
           </div>
 
      <!-- Javascripts -->
+     <script src="http://cdn.kik.com/cards/0/cards.js"></script>
 
+     <!-- zerver:js/main.min.js -->
      <script src="js/libs/zepto.js"></script>  
      <script src="js/libs/app.js"></script>
      <script src="js/libs/photo-viewer.js"></script>
      <script src="js/libs/slide-viewer.js"></script>
      <script src="js/libs/analytics.js"></script>
      <script src="js/util.js"></script>
-
-
      <script src="js/home.js"></script>
      <script src="js/preview.js"></script>
+     <script src="js/selector.js"></script>
 
      <script src="zerver/zAPI.js"></script>
+     <!-- /zerver -->
 
 
      <script> 
@@ -86,7 +112,7 @@
           });
 
      }else{
-          App.load('home');
+          App.load('selector');
      }
      </script>
      </body>

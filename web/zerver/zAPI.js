@@ -1,5 +1,18 @@
 var feedparser = require('../../node_modules/feedparser');
  
-exports.getData = function (callback) {
-    feedparser.parseUrl('http://9gagrss.com/feed/').on('complete',callback);
+exports.getData = function (data, callback) {
+    switch(data.content){
+    	case 'Failblog':
+    		feedparser.parseUrl('http://feeds.feedburner.com/failblog?format=xml').on('complete',callback);
+    		break;
+    	case 'Memebase':
+    		feedparser.parseUrl('http://feeds.feedburner.com/Memebase?format=xml').on('complete',callback);
+    		break;
+    	case 'Cheezburger':
+    		feedparser.parseUrl('http://feeds.feedburner.com/ICanHasCheezburger?format=xml').on('complete',callback);
+    		break;
+    	case 'Imgur':
+    		feedparser.parseUrl('http://feeds.feedburner.com/ImgurGallery?format=xml').on('complete',callback);
+    		break;
+    }
 };
