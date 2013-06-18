@@ -14,10 +14,12 @@ js/libs/zepto.js
 js/libs/app.js
 js/libs/photo-viewer.js
 js/libs/slide-viewer.js
+js/libs/analytics.js
 js/util.js
 js/home.js
 js/preview.js
 js/selector.js
+zerver/zAPI.js
 # /zerver
 
 //www.google-analytics.com/ga.js
