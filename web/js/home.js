@@ -22,7 +22,7 @@ App.populator('home', function (page, data) {
                     PageBuilder(posts);
                }else{
                     App.back();
-                    App.dialog({title:"Cannot Load Content", text: "Please try again."});
+                    App.dialog({title:"Cannot Load Content", text: "Please refresh."});
                     _gaq.push(['_trackEvent', 'Error', 'Content Error Loading']);
                     return;
                }

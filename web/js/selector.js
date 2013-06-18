@@ -1,43 +1,35 @@
 App.populator('selector', function(page){
 	var p = $(page);
 
-	p.find('#fb').on('click', function(){
 
-		if(navigator.online){
-			_gaq.push(['_trackEvent', 'PageOpen', 'Failblog']);
-			App.load('home', {content: 'Failblog', color: '#00AAFF'});
-		}else{
-			App.dialog({title:"Network Error Connection", text: "Please make sure you have a network connection then try again."});
-		}
+
+	p.find('#fb').on('click', function(){
+		launch('Failblog','#00AAFF');
 	});
 
 	p.find('#mb').on('click', function(){
-
-		if(navigator.online){
-		_gaq.push(['_trackEvent', 'PageOpen', 'Memebase']);
-		App.load('home', {content: 'Memebase', color: '#9ACD32'});
-		}else{
-			App.dialog({title:"Network Error Connection", text: "Please make sure you have a network connection then try again."});
-		}
+		launch('Memebase','#9ACD32');
 	});
 
 	p.find('#cb').on('click', function(){
-		
-		if(navigator.online){
-		_gaq.push(['_trackEvent', 'PageOpen', 'Cheezburger']);
-		App.load('home', {content: 'Cheezburger', color: 'orange'});
-		}else{
-			App.dialog({title:"Network Error Connection", text: "Please make sure you have a network connection then try again."});
-		}
+		launch('Cheezburger','orange');
 	});
 
 	p.find('#im').on('click', function(){
-		
-		if(navigator.online){
-		_gaq.push(['_trackEvent', 'PageOpen', 'Imgur']);
-		App.load('home', {content: 'Imgur', color: '#FF0099'});
+		launch('Imgur', '#FF0099');
+	});
+
+
+	function launch(src, src_color){
+
+		if(navigator.onLine === true){
+			_gaq.push(['_trackEvent', 'PageOpen', src]);
+			App.load('home',{content: src, color: src_color});
 		}else{
 			App.dialog({title:"Network Error Connection", text: "Please make sure you have a network connection then try again."});
 		}
-	});
+	}
+
+
+
 });
