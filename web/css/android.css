@@ -10,6 +10,10 @@
 	color: white;
 }
 
+.app-android .app-topbar .app-button.back.active{
+	background-color: black;
+}
+
 .app-android .app-list li{
 	padding-top: 10px;
 }

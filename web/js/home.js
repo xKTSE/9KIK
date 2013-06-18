@@ -21,8 +21,15 @@ App.populator('home', function (page, data) {
                if(posts){
                     PageBuilder(posts);
                }else{
+                    App.back();
+                    App.dialog({title:"Cannot Load Content", text: "Please try again."});
+                    _gaq.push(['_trackEvent', 'Error', 'Content Error Loading']);
                     return;
                }
+          }).error(function(){
+               App.dialog({title:"Network Error Connection", text: "Please make sure you have a network connection then try again."})
+               _gaq.push(['_trackEvent', 'Error', 'Network Error']);
+
           });
 
      });

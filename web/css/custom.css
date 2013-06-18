@@ -79,7 +79,7 @@
 	box-shadow: -1px 0 #000 inset;
 }
 
-.app-topbar .app-button:active{
+.app-topbar .app-button.active{
 	background: black;
 }
 
