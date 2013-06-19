@@ -22,7 +22,7 @@ App.populator('home', function (page, src_data) {
      cards.ready(function(){
           /* Async callbacks */
           zAPI.getData(src_data.src, function(meta, posts){
-               if(posts){
+               if(typeof posts !== 'undefined' && posts.length > 0){
                     PageBuilder(posts);
                }else{
 
