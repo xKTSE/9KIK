@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
+<html>
 <head>
      <title>Kikur</title>
      <link rel="kik-icon" href="icon.png">
@@ -98,12 +98,13 @@
 
 
      <script>
-     
-     App.setDefaultTransition({
-          ios: 'fade',
-          iosFallback : 'slide-left',
-          android :'fade',
-     });
+App.setDefaultTransition({
+  ios             : 'fade' , // iOS
+  iosFallback     : 'instant' , // iOS <5
+  android         : 'fade' , // Android
+  androidFallback : 'instant' , // Android < 4
+  fallback        : 'explode-in'   // non-iOS, non-Android
+});
      
 
      if(cards.browser){

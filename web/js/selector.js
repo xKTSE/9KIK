@@ -23,9 +23,15 @@ App.populator('selector', function(page){
 		if(navigator.onLine === true){
 
 			_gaq.push(['_trackEvent', 'PageOpen', _src]);
+			var transition = 'slide\-left';
+
+			if(App.platform === 'ios' && App.platformVersion < 4){
+				transition = 'instant';
+			}
+
 			App.load('home', {	src: _src,
 								color: _color
-							 }, 'slide-left');
+							 }, transition);
 		}else{
 			App.dialog({	title:"Network Connection Error",
 							text: "Please make sure you have a network connection then try again."

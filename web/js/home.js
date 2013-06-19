@@ -198,14 +198,6 @@ App.populator('home', function (page, src_data) {
                               
                               }else{
 
-                                   var transition = 'fade';
-                                   if((App.platform === 'android' && App.platformVersion < 3) || (App.platform === 'ios' && App.platformVersion < 5)){
-                                        transition = 'slide-left';
-                                   }
-
-
-
-
                                    _gaq.push(['_trackEvent', 'PageOpen', 'ImagePreview']);
                                    App.load('preview', { data : data[slideViewer.page()] });
                               }
