@@ -86,6 +86,16 @@ App.populator('preview', function(page, params){
           
           });
 
+     }else if(data.imgsrc.indexOf('.gif') > -1){
+          console.log(data.imgsrc);
+          var gif = $('<img />')
+               .addClass('preview-gif')
+               .attr('src', data.imgsrc);
+
+          p.find('.app-content')
+               .append(gif)
+               .css('text-align', 'center');
+
      }else{
           previewImage = data.imgsrc;
 
