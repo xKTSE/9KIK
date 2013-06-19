@@ -9,10 +9,14 @@ App.populator('preview', function(page, params){
      
      /* Handle iOS */
      if(App.platform === 'ios'){
-
           if(App.platformVersion < 5){
                p.find('.app-topbar .app-button.back').css('border-shadow','none');
           }
+     }
+
+
+     if(App.platform === 'android' && App.platformVersion < 3){
+          p.find('.app-topbar .app-button.back').css('border-right', '1px solid black');
      }
 
      

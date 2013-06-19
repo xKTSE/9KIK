@@ -1,6 +1,10 @@
 App.populator('home', function (page, src_data) {
      var p = $(page);
 
+     if(App.platform === 'android' && App.platformVersion < 3){
+          p.find('.app-topbar .app-button.back').css('border-right', '1px solid black');
+     }
+
 
      p.find('#refresh').on('click', function(){
           _gaq.push(['_trackEvent', 'PageOpen', 'Refresh']);
