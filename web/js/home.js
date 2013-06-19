@@ -101,9 +101,9 @@ App.populator('home', function (page, src_data) {
 
 
           slideViewer.on('flip', function(i){
-               if (i >= 0){
+               if (slideViewer.page() >= 0){
                     _gaq.push(['_trackEvent', 'ContentSliding', 'slide']);
-                    p.find('.title-bar-text').html(data[i].title);
+                    p.find('.title-bar-text').html(data[slideViewer.page()].title);
                }else{
                     return;
                }                 
@@ -197,6 +197,7 @@ App.populator('home', function (page, src_data) {
                                    cards.browser.open(data[i].video);
                               
                               }else{
+
 
                                    _gaq.push(['_trackEvent', 'PageOpen', 'ImagePreview']);
                                    App.load('preview', { data : data[slideViewer.page()] });

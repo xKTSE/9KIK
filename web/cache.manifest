@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-#zerver : css/main.min.css
+#zerver:css/main.min.css
 css/default.css
 css/custom.css
 css/ios.css
