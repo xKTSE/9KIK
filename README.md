@@ -1,16 +1,10 @@
 9KIKS
 =====
 ### The Unofficial GAG Viewer for the Kik Messenger app
+## A Child of Kikur
+
 
 View and share pictures with your friends and family through this card!
-
-### Accessing
-
-Launch this link from your Kik Messager!
-```
-ninekiks.herokuapp.com
-```
-    
 
 
 ##### RSS Feed From
