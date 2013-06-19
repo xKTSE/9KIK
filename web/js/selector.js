@@ -1,8 +1,6 @@
 App.populator('selector', function(page){
 	var p = $(page);
 
-
-
 	p.find('#fb').on('click', function(){
 		launch('Failblog','#00AAFF');
 	});
@@ -28,7 +26,8 @@ App.populator('selector', function(page){
 								color: src_color
 							 });
 		}else{
-			App.dialog({	title:"Network Error Connection",
+			_gaq.push(['_trackEvent', 'Error', 'Network Connection Error']);
+			App.dialog({	title:"Network Connection Error",
 							text: "Please make sure you have a network connection then try again."
 						});
 		}
