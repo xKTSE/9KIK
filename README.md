@@ -1,8 +1,6 @@
-9KIKS
+9KIKS (Kikur Child)
 =====
 ### The Unofficial GAG Viewer for the Kik Messenger app
-## A Child of Kikur
-
 
 View and share pictures with your friends and family through this card!
 
