@@ -1,14 +1,14 @@
-App.populator('home', function (page, desired_src) {
+App.populator('home', function (page, src_data) {
      var p = $(page);
 
 
      p.find('#refresh').on('click', function(){
           _gaq.push(['_trackEvent', 'PageOpen', 'Refresh']);
-          App.load('home', desired_src);
+          App.load('home', src_data);
           App.removeFromStack(-1);
      });
 
-     p.find('.app-button.back').css('color', desired_src.color);
+     p.find('.app-button.back').css('color', src_data.color);
 
      /* For loader purposes */
      var loaderElem = p.find(".app-section.loader").clone();
@@ -17,7 +17,7 @@ App.populator('home', function (page, desired_src) {
 
      cards.ready(function(){
           /* Async callbacks */
-          zAPI.getData(desired_src, function(meta, posts){
+          zAPI.getData(src_data.src, function(meta, posts){
                if(posts){
                     PageBuilder(posts);
                }else{
@@ -31,7 +31,7 @@ App.populator('home', function (page, desired_src) {
                     return;
                }
           }).error(function(){
-               App.dialog({   title: "Network Error Connection",
+               App.dialog({   title: "Network Connection Error",
                               text: "Please make sure you have a network connection then try again."
                          });
                _gaq.push(['_trackEvent', 'Error', 'Network Error']);
@@ -144,7 +144,6 @@ App.populator('home', function (page, desired_src) {
 
                     var postSection = $('<div />')
                          .addClass('app-section')
-                         .css('text-align', 'center')
                          .append(loaderElem.clone());
 
                     var imageSection = $('<div />')
@@ -159,14 +158,20 @@ App.populator('home', function (page, desired_src) {
                               img.addClass('main-image');
                          }
 
-                         
-
-                         /* Show the loader until images are ready to be rendered & displayed */
                          img[0].onload = function() {
                               postSection.find(".loader").remove();
                               imageSection.append(img);
                               postSection.append(imageSection);
                          };
+
+                         img[0].onerror = function(){
+                              App.dialog({   title: "Image Loading Time Out",
+                                             text: "Please refresh and try again."
+                              });
+
+                              _gaq.push(['_trackEvent', 'Error', 'Image Loading Time Out']);
+                         }
+
 
 
                          img.attr('src', postImage);
@@ -174,7 +179,7 @@ App.populator('home', function (page, desired_src) {
                          img.clickable().on('click', function(){
 
                               if(isVideo === true){
-
+                                   _gaq.push(['_trackEvent', 'PageOpen', 'VideoPreview']);
                                    cards.browser.open(data[i].video);
                               
                               }else{

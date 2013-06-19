@@ -14,9 +14,6 @@
 	background-color: black;
 }
 
-.app-android .app-list li{
-	padding-top: 10px;
-}
 
 .app-android .app-content .app-button.nav.active{
 	color:white;

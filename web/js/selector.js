@@ -18,18 +18,18 @@ App.populator('selector', function(page){
 	});
 
 
-	function launch(src, src_color){
+	function launch(_src, _color){
 
 		if(navigator.onLine === true){
-			_gaq.push(['_trackEvent', 'PageOpen', src]);
-			App.load('home', {	content: src,
-								color: src_color
+			_gaq.push(['_trackEvent', 'PageOpen', _src]);
+			App.load('home', {	src: _src,
+								color: _color
 							 });
 		}else{
-			_gaq.push(['_trackEvent', 'Error', 'Network Connection Error']);
 			App.dialog({	title:"Network Connection Error",
 							text: "Please make sure you have a network connection then try again."
 						});
+			_gaq.push(['_trackEvent', 'Error', 'Network Connection Error']);
 		}
 	}
 

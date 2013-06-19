@@ -50,7 +50,7 @@
 
 
 .app-topbar .app-title{
-	font-family: 'opensans', 'Helvetica';
+	font-family: 'opensans', 'helvetica';
 	font-size: 20px;
 	font-weight: bold;
 }
@@ -67,13 +67,6 @@
 	font-weight: bold;
 
 	-webkit-box-shadow: 0 1px 1px black;
-}
-
-.app-title.left{
-	text-align: left;
-	padding-left: 13px;
-
-
 }
 
 .app-topbar .app-button{
@@ -247,7 +240,6 @@
 	height: 110px;
 	font-size: 100px;
 	font-weight: bold;
-	letter-spacing: -0.05em;
 }
 
 .main-title sub{
@@ -263,10 +255,10 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	text-align: center;
-	margin-top:100px;
+	margin-top: 100px;
 }
 
 .preview-gif{
-	margin-top:60px;
+	margin-top: 60px;
 	width: 95%;
 }

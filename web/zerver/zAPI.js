@@ -1,7 +1,7 @@
 var feedparser = require('../../node_modules/feedparser');
  
-exports.getData = function (data, callback) {
-    switch(data.content){
+exports.getData = function (src, callback) {
+    switch(src){
     	case 'Failblog':
     		feedparser.parseUrl('http://feeds.feedburner.com/failblog?format=xml').on('complete',callback);
     		break;
