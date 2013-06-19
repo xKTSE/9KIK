@@ -24,9 +24,13 @@ App.populator('selector', function(page){
 
 		if(navigator.onLine === true){
 			_gaq.push(['_trackEvent', 'PageOpen', src]);
-			App.load('home',{content: src, color: src_color});
+			App.load('home', {	content: src,
+								color: src_color
+							 });
 		}else{
-			App.dialog({title:"Network Error Connection", text: "Please make sure you have a network connection then try again."});
+			App.dialog({	title:"Network Error Connection",
+							text: "Please make sure you have a network connection then try again."
+						});
 		}
 	}
 

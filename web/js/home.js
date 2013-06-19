@@ -1,14 +1,14 @@
-App.populator('home', function (page, data) {
+App.populator('home', function (page, desired_src) {
      var p = $(page);
 
 
      p.find('#refresh').on('click', function(){
           _gaq.push(['_trackEvent', 'PageOpen', 'Refresh']);
-          App.load('home', data);
+          App.load('home', desired_src);
           App.removeFromStack(-1);
      });
 
-     p.find('.app-button.back').css('color', data.color);
+     p.find('.app-button.back').css('color', desired_src.color);
 
      /* For loader purposes */
      var loaderElem = p.find(".app-section.loader").clone();
@@ -17,17 +17,23 @@ App.populator('home', function (page, data) {
 
      cards.ready(function(){
           /* Async callbacks */
-          zAPI.getData(data, function(meta, posts){
+          zAPI.getData(desired_src, function(meta, posts){
                if(posts){
                     PageBuilder(posts);
                }else{
+
                     App.back();
-                    App.dialog({title:"Cannot Load Content", text: "Please refresh."});
-                    _gaq.push(['_trackEvent', 'Error', 'Content Error Loading']);
+                    App.dialog({   title: "Cannot Load Content",
+                                   text: "Please try again."
+                              });
+
+                    _gaq.push(['_trackEvent', 'Error', 'Content Loading Error']);
                     return;
                }
           }).error(function(){
-               App.dialog({title:"Network Error Connection", text: "Please make sure you have a network connection then try again."})
+               App.dialog({   title: "Network Error Connection",
+                              text: "Please make sure you have a network connection then try again."
+                         });
                _gaq.push(['_trackEvent', 'Error', 'Network Error']);
 
           });
@@ -44,7 +50,7 @@ App.populator('home', function (page, data) {
                var item = {
                     title : posts[j].title,
                     video: extract(posts[j].description, 'iframe', 'src'),
-                    image_file: extract(posts[j].description, 'img', 'src')
+                    imgsrc: extract(posts[j].description, 'img', 'src')
                };
 
                data.push(item);
@@ -71,16 +77,16 @@ App.populator('home', function (page, data) {
 
                if(typeof data[k].video !== 'undefined'){
                     kikpic = '../img/play_preview.png';
-               }else if(data[k].image_file.indexOf('.gif') > -1){
+               }else if(data[k].imgsrc.indexOf('.gif') > -1){
                     kikpic = '../img/kikpic_gif.png';
                }else{
-                    kikpic = data[k].image_file;
+                    kikpic = data[k].imgsrc;
                }
 
 
                cards.kik.send({
                     title: decodeSpecialChars(data[k].title),
-                    text: 'So funny it\'s UNREAL',
+                    text: 'Check this out!',
                     pic: kikpic,
                     linkData: JSON.stringify(data[k])
                });
@@ -122,7 +128,7 @@ App.populator('home', function (page, data) {
                if(isVideo === true){
                     postImage = '../img/play_preview.png'
                }else{
-                    postImage = data[i].image_file;
+                    postImage = data[i].imgsrc;
                }
 
                /* the main slideViewer content */

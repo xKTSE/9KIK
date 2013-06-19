@@ -9,16 +9,12 @@ App.populator('preview', function(page, params){
      
      /* Handle iOS */
      if(App.platform === 'ios'){
-          p.find('.app-button.back').text('kikur');
 
           if(App.platformVersion < 5){
                p.find('.app-topbar .app-button.back').css('border-shadow','none');
           }
      }
 
-     if(App.platform === 'android' && App.platformVersion < 3){
-          p.find('.app-button.back').css('background', 'none');
-     }
      
      p.find('.app-content').css('background','black');
      p.css('background','black');
@@ -40,7 +36,7 @@ App.populator('preview', function(page, params){
           if(isVideo === true){
                previewImage = '../img/play_preview.png';
           }else{
-               previewImage = data.image_file;
+               previewImage = data.imgsrc;
           }
 
      }
@@ -56,15 +52,15 @@ App.populator('preview', function(page, params){
 
           if(isVideo === true){
                kikpic = '../img/play_preview.png';
-          }else if(data.image_file.indexOf('.gif') > -1){
+          }else if(data.imgsrc.indexOf('.gif') > -1){
                kikpic = '../img/kikpic_gif.png';
           }else{
-               kikpic = data.image_file;
+               kikpic = data.imgsrc;
           }
 
           cards.kik.send({
                title: decodeSpecialChars(data.title),
-               text: 'So funny it\'s UNREAL',
+               text: 'Check this out!',
                pic: kikpic,
                linkData: JSON.stringify(data)
           });
@@ -86,13 +82,12 @@ App.populator('preview', function(page, params){
                .css('text-align','center');
 
           p.find('.preview-video').on('click', function(){
-               
                cards.browser.open(data.video);
           
           });
 
      }else{
-          previewImage = data.image_file;
+          previewImage = data.imgsrc;
 
           var photoViewer = new PhotoViewer(page, [previewImage], {
                automaticTitles: false
