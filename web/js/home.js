@@ -1,7 +1,7 @@
 App.populator('home', function (page, src_data) {
      var p = $(page);
 
-     if(App.platform === 'android' && App.platformVersion < 3){
+     if((App.platform === 'android' && App.platformVersion < 3) || (App.platform === 'ios' && App.platformVersion < 5)) {
           p.find('.app-topbar .app-button.back').css('border-right', '1px solid black');
      }
 
@@ -110,6 +110,16 @@ App.populator('home', function (page, src_data) {
           });
 
 
+
+          p.on("appForward appBack", function(){
+
+               slideViewer.eachMaster(function (elm, page) {
+                    if (page !== slideViewer.page()) {
+                         elm.style.visibility = 'hidden';
+                    }
+               });
+          });
+
           /*
           - Force dat SlideViewer to set the title of the first post
           */
@@ -187,6 +197,15 @@ App.populator('home', function (page, src_data) {
                                    cards.browser.open(data[i].video);
                               
                               }else{
+
+                                   var transition = 'fade';
+                                   if((App.platform === 'android' && App.platformVersion < 3) || (App.platform === 'ios' && App.platformVersion < 5)){
+                                        transition = 'slide-left';
+                                   }
+
+
+
+
                                    _gaq.push(['_trackEvent', 'PageOpen', 'ImagePreview']);
                                    App.load('preview', { data : data[slideViewer.page()] });
                               }

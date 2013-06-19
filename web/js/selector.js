@@ -21,10 +21,11 @@ App.populator('selector', function(page){
 	function launch(_src, _color){
 
 		if(navigator.onLine === true){
+
 			_gaq.push(['_trackEvent', 'PageOpen', _src]);
 			App.load('home', {	src: _src,
 								color: _color
-							 });
+							 }, 'slide-left');
 		}else{
 			App.dialog({	title:"Network Connection Error",
 							text: "Please make sure you have a network connection then try again."

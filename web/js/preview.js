@@ -15,7 +15,7 @@ App.populator('preview', function(page, params){
      }
 
 
-     if(App.platform === 'android' && App.platformVersion < 3){
+     if((App.platform === 'android' && App.platformVersion < 3) || (App.platform === 'ios' && App.platformVersion < 5)){
           p.find('.app-topbar .app-button.back').css('border-right', '1px solid black');
      }
 

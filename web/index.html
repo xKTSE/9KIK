@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
+<html>
 <head>
      <title>Kikur</title>
      <link rel="kik-icon" href="icon.png">
@@ -97,8 +97,15 @@
      <!-- /zerver -->
 
 
-     <script> 
-     App.setDefaultTransition('fade');
+     <script>
+     
+     App.setDefaultTransition({
+          ios: 'fade',
+          iosFallback : 'slide-left',
+          android :'fade',
+     });
+     
+
      if(cards.browser){
           cards.browser.setOrientationLock('portrait');
      }
