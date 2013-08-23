@@ -1,9 +1,23 @@
 App.populator('home', function (page, src_data) {
-     var p = $(page);
+     var  p              = $(page),
+          loaderElem     = p.find(".app-section.loader").clone();
 
-     if((App.platform === 'android' && App.platformVersion < 3) || (App.platform === 'ios' && App.platformVersion < 5)) {
-          p.find('.app-topbar .app-button.back').css('border-right', '1px solid black');
+
+
+
+     // Remove button borders on older OS'
+     if(  (App.platform === 'android' && App.platformVersion < 3) || 
+          (App.platform === 'ios' && App.platformVersion < 5)    ) {
+          p.find('.app-topbar .app-button.back')
+               .css('border-right', '1px solid black');
      }
+
+
+
+     // Customize the title text color to give user's a sense of navigation
+     p.find('.app-button.back')
+          .css('color', src_data.color);
+
 
 
      p.find('#refresh').on('click', function(){
@@ -12,21 +26,18 @@ App.populator('home', function (page, src_data) {
           App.removeFromStack(-1);
      });
 
-     p.find('.app-button.back').css('color', src_data.color);
-
-     /* For loader purposes */
-     var loaderElem = p.find(".app-section.loader").clone();
-
 
 
      cards.ready(function(){
           /* Async callbacks */
           zAPI.getData(src_data.src, function(meta, posts){
-               if(typeof posts !== 'undefined' && posts.length > 0){
-                    PageBuilder(posts);
-               }else{
+               if (typeof posts !== 'undefined' && posts.length > 0) {
 
+                    PageBuilder(posts);
+               
+               } else {
                     App.back();
+
                     App.dialog({   title: "Cannot Load Content",
                                    text: "Please try again."
                               });
@@ -38,6 +49,7 @@ App.populator('home', function (page, src_data) {
                App.dialog({   title: "Network Connection Error",
                               text: "Please make sure you have a network connection then try again."
                          });
+               
                _gaq.push(['_trackEvent', 'Error', 'Network Error']);
 
           });
@@ -47,10 +59,15 @@ App.populator('home', function (page, src_data) {
 
 
 
-     function PageBuilder(posts){
+     function PageBuilder(posts)
+     {     
+          /* TO DO :
+               MOVE THIS DATA PARSER INTO ZERVER
+          */
           var data = [];
 
-          for(var j = 0; j < posts.length; j++){
+          for (var j = 0; j < posts.length; j++) {
+
                var item = {
                     title : posts[j].title,
                     video: extract(posts[j].description, 'iframe', 'src'),
@@ -59,32 +76,40 @@ App.populator('home', function (page, src_data) {
 
                data.push(item);
           }
+          /* ================== */
 
 
-          /* Unreal SlideViewer
-          - some maths to make slideViewer function incoherent with app-topbar & title-bar-text;
-          */
-          var wrapper = page.querySelector('.wrapper');
 
-          var height = (p.height() - (p.find(".title-bar-text").height() + p.find(".app-topbar").height()));
+
+          // Some math to make silverViewer function coherent with the size of app-topbar & title-bar-text
+          var  wrapper   = page.querySelector('.wrapper'),
+               height    = (p.height() - (p.find(".title-bar-text").height() + p.find(".app-topbar").height()));
+          
           wrapper.innerHTML = '';
           wrapper.style.height = height + "px";
           
 
-          var slideViewer = new SlideViewer(wrapper, source,{startAt: 0, length: data.length});
+          // Initalizing the slideViewer
+          var slideViewer = new SlideViewer(wrapper, source, {   startAt: 0,    length: data.length });
 
 
 
           p.find("#kik").click(function(){
-               var k = slideViewer.page();
-               var kikpic;
+               var  k = slideViewer.page(),
+                    kikpic;
 
-               if(typeof data[k].video !== 'undefined'){
+               if (typeof data[k].video !== 'undefined') {
+
                     kikpic = '../img/play_preview.png';
-               }else if(data[k].imgsrc.indexOf('.gif') > -1){
+               
+               } else if (data[k].imgsrc.indexOf('.gif') > -1) {
+               
                     kikpic = '../img/kikpic_gif.png';
-               }else{
+               
+               } else {
+               
                     kikpic = data[k].imgsrc;
+               
                }
 
 
@@ -96,21 +121,32 @@ App.populator('home', function (page, src_data) {
                });
 
                _gaq.push(['_trackEvent', 'KikContent', 'Kikked']);
-
           });
 
 
+          /*
+               We set the title of the page outside of source(),
+               simply because if we didn't,
+               there would be instances which the displayed title != display content
+          */
           slideViewer.on('flip', function(i){
-               if (slideViewer.page() >= 0){
+               if (slideViewer.page() >= 0) {
                     _gaq.push(['_trackEvent', 'ContentSliding', 'slide']);
-                    p.find('.title-bar-text').html(data[slideViewer.page()].title);
-               }else{
+                    
+                    p.find('.title-bar-text')
+                         .html(data[slideViewer.page()].title);
+               } else {
                     return;
                }                 
           });
 
 
 
+          /*
+               During a slide transition,
+               content from the slideViewer is shown due to the slide,
+               we simply make it hidden during slides
+          */
           p.on("appForward appBack", function(){
 
                slideViewer.eachMaster(function (elm, page) {
@@ -120,41 +156,47 @@ App.populator('home', function (page, src_data) {
                });
           });
 
-          /*
-          - Force dat SlideViewer to set the title of the first post
-          */
+
+          // We need to force the title of the first item to show otherwise it won't
           p.find('.title-bar-text').html(data[0].title);
 
 
+
           function source(i){
-               /* to bypass undefined-ness; since Slideviewer loads 3 images at a time */
+
+               // Bypassing undefined content (note: sliderViewer loads 3 images at a time)
                if ( i < 0 ) {
                     return;
                }
 
+               var  postImage,
+                    isVideo = typeof data[i].video !== 'undefined' ? true : false;
 
-               /* For Future References: Publish date
-                    var postDate = data[i].pubDate.substr(0, data[i].pubDate.length - 14);
-               */
-               var postImage;
-               var isVideo = typeof data[i].video !== 'undefined' ? true : false;
 
-               if(isVideo === true){
+               if (isVideo === true) {
                     postImage = '../img/play_preview.png'
-               }else{
+               } else {
                     postImage = data[i].imgsrc;
                }
 
-               /* the main slideViewer content */
+               // Main slideViewer content div
                var slideContent = $('<div />')
                     .addClass("listwrapper");
 
-               /* Enable iScroll for certain devices */
-               if ((App.platform === 'android' && App.platformVersion >= 4) || (App.platform ==='ios' && (App.platformVersion>=5 && App.platformVersion <6))) {
+
+               // Enable iScroll for certain devices
+               if ( (App.platform === 'android' && App.platformVersion >= 4) || 
+                    (App.platform ==='ios' && (App.platformVersion>=5 && App.platformVersion <6)))  {
+
                     slideContent.scrollable(true);
+
                } else {
                     slideContent.scrollable();
                }
+
+
+
+
 
                     var postSection = $('<div />')
                          .addClass('app-section')
@@ -165,10 +207,13 @@ App.populator('home', function (page, src_data) {
                          .css('text-align', 'center');
 
                     var img = $('<img />');
-                         if(isVideo === true){
+
+                         if (isVideo === true) {
+                    
                               img.addClass('main-image video');
                               imageSection.css('background','black');
-                         }else{
+                    
+                         } else {
                               img.addClass('main-image');
                          }
 
@@ -187,18 +232,16 @@ App.populator('home', function (page, src_data) {
                          }
 
 
-
                          img.attr('src', postImage);
 
                          img.clickable().on('click', function(){
 
-                              if(isVideo === true){
+                              if (isVideo === true) {
+                              
                                    _gaq.push(['_trackEvent', 'PageOpen', 'VideoPreview']);
                                    cards.browser.open(data[i].video);
-                              
-                              }else{
-
-
+                              } else {
+                                   
                                    _gaq.push(['_trackEvent', 'PageOpen', 'ImagePreview']);
                                    App.load('preview', { data : data[slideViewer.page()] });
                               }

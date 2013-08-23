@@ -1,7 +1,8 @@
 // ----------------
 // HTML Extractor
 // ----------------
-function extract(data, tag, attr){
+function extract(data, tag, attr)
+{
 	var html = $("<div>" + data + "</div>");
 	return html.find(tag).attr(attr);
 }
@@ -9,17 +10,19 @@ function extract(data, tag, attr){
 // ----------------
 // HTML Special Char Decoder
 // ----------------
-function decodeSpecialChars(string){
+function decodeSpecialChars(string)
+{
 	return $('<div />').html(string).text();
 }
 
 // ----------------
 // Android Back Button Handler
 // ----------------
-function handleBackButton () {
+function handleBackButton()
+{
  	if (cards.kik.returnToConversation) {
      	cards.kik.returnToConversation();
- 	}else{
+ 	} else {
 		return false;
   	}
 }
@@ -27,7 +30,8 @@ function handleBackButton () {
 // ----------------
 // Android onBack()
 // ----------------
-function onBack(){
+function onBack()
+{
 	if ( cards.picker && cards.picker.cancel ) {
 		cards.picker.cancel();
 	}

@@ -1,31 +1,40 @@
 App.populator('preview', function(page, params){
-     var data = params.data;
-     var p = $(page);
 
-     var previewImage;
-     var previewTitle;
 
-     var isVideo = typeof data.video !== 'undefined' ? true : false;
+     var  p                   = $(page),
+          data                = params.data,
+          previewImage,
+          previewTitle,
+          isVideo             = typeof data.video !== 'undefined' ? true : false;
      
-     /* Handle iOS */
-     if(App.platform === 'ios'){
-          if(App.platformVersion < 5){
-               p.find('.app-topbar .app-button.back').css('border-shadow','none');
-          }
-     }
 
 
-     if((App.platform === 'android' && App.platformVersion < 3) || (App.platform === 'ios' && App.platformVersion < 5)){
-          p.find('.app-topbar .app-button.back').css('border-right', '1px solid black');
-     }
-
-     
      p.find('.app-content').css('background','black');
      p.css('background','black');
 
 
 
+     // TO DO :  SEE IF THIS CAN BE REMOVED FROM CODE
+     // if(App.platform === 'ios' && App.platformVersion < 5){
+
+     //           p.find('.app-topbar .app-button.back')
+     //                .css('border-shadow','none');
+     // }
+
+
+     // Remove button border on older OS'
+     if(  (App.platform === 'android' && App.platformVersion < 3) ||
+          (App.platform === 'ios' && App.platformVersion < 5)    ) {
+          
+          p.find('.app-topbar .app-button.back')
+               .css('border-right', '1px solid black');
+     }
+
+
+
+
      if (params.fromKik) {
+
           p.find('.app-button.back').on('click', function(){
                _gaq.push(['_trackEvent', 'PageOpen', 'Home']);
 
@@ -37,9 +46,15 @@ App.populator('preview', function(page, params){
                App.removeFromStack(-1);
           });
 
-          if(isVideo === true){
+          /*
+               It is not possible to from HOME to PREVIEW with videos. 
+               So, the only entry point left is from a Kik Content.
+               We simply use a placeholder that launches YouTube.
+          */
+
+          if (isVideo === true) {
                previewImage = '../img/play_preview.png';
-          }else{
+          } else {
                previewImage = data.imgsrc;
           }
 
@@ -54,11 +69,16 @@ App.populator('preview', function(page, params){
 
      p.find("#kik").click(function(){
 
-          if(isVideo === true){
+          if (isVideo === true) {
+
                kikpic = '../img/play_preview.png';
-          }else if(data.imgsrc.indexOf('.gif') > -1){
+
+          } else if(data.imgsrc.indexOf('.gif') > -1) {
+
                kikpic = '../img/kikpic_gif.png';
-          }else{
+
+          } else {
+
                kikpic = data.imgsrc;
           }
 
@@ -70,13 +90,19 @@ App.populator('preview', function(page, params){
           });
 
           _gaq.push(['_trackEvent', 'KikContent', 'Kikked']);
-
      });
 
 
      p.find('.preview-title').html(previewTitle);
 
-     if(isVideo === true){
+     if (isVideo === true) {
+          /* 
+               If we are dealing with a video, 
+               we simply use an image placeholder that once pressed,
+               will launch YouTube in the browser
+          */
+
+
           var video = $('<img />')
                .addClass('preview-video')
                .attr('src', '../img/play_preview.png');
@@ -87,11 +113,15 @@ App.populator('preview', function(page, params){
 
           p.find('.preview-video').on('click', function(){
                cards.browser.open(data.video);
-          
           });
 
-     }else if(data.imgsrc.indexOf('.gif') > -1){
-          console.log(data.imgsrc);
+     } else if (data.imgsrc.indexOf('.gif') > -1) {
+
+          /*
+               It should be noted that photoviewer does not support gifs
+          */
+
+
           var gif = $('<img />')
                .addClass('preview-gif')
                .attr('src', data.imgsrc);
@@ -100,7 +130,8 @@ App.populator('preview', function(page, params){
                .append(gif)
                .css('text-align', 'center');
 
-     }else{
+     } else {
+
           previewImage = data.imgsrc;
 
           var photoViewer = new PhotoViewer(page, [previewImage], {

@@ -1,84 +1,85 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
+<html>
 <head>
      <title>Kikur</title>
      <link rel="kik-icon" href="icon.png">
      
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <meta name="kik-more" content="kikur.net">
-          <meta name="description" content="Your source of funny pictures from Failblog, Memebase and more!">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <meta name="kik-more" content="kikur.net">
+     <meta name="description" content="Your source of FUNNY PICTURES from Failblog, Memebase and more!">
 
 
-          <!-- Styles -->
+     <!-- Styles -->
 
-          <!-- zerver:css/main.min.css -->
-          <link rel="stylesheet" href="css/default.css">
-          <link rel="stylesheet" href="css/custom.css">
-          <link rel="stylesheet" href="css/ios.css">
-          <link rel="stylesheet" href="css/android.css">
-          <!-- /zerver -->
-
-          
-
-     </head>
-     <body>
-          <div class ="app-page" data-page="selector">
-               <div class="app-content" data-no-scroll="true" id="selector">
-
-                    <div class="main-title">
-                         <p>kikur</p>
-                         <sub>Select. Swipe. Smile.</sub>
-                    </div>
+     <!-- zerver:css/main.min.css -->
+     <link rel="stylesheet" href="css/default.css">
+     <link rel="stylesheet" href="css/custom.css">
+     <link rel="stylesheet" href="css/ios.css">
+     <link rel="stylesheet" href="css/android.css">
+     <!-- /zerver -->
 
 
-                    <table id="button-group">
-                         <tr>
+
+</head>
+<body>
+     <div class ="app-page" data-page="selector">
+          <div class="app-content" data-no-scroll="true" id="selector">
+
+               <div class="main-title">
+                    <p>kikur</p>
+                    <sub>Select. Swipe. Smile.</sub>
+               </div>
+
+
+               <table id="button-group">
+                    <tr>
                          <td><div class="app-button nav" id="fb">Failblog</div></td>
                          <td><div class="app-button nav" id="mb">Memebase</div></td>
-                         </tr>
-                         <tr>
+                    </tr>
+                    <tr>
                          <td><div class="app-button nav" id="cb">Cheezburger</div></td>
                          <td><div class="app-button nav" id="im">Imgur</div></td>
-                         </tr>
-                    </table>
-               </div>
+                    </tr>
+               </table>
+          </div>
+     </div>
+
+
+
+     <!-- Home Page -->
+     <div class="app-page" data-page="home">
+          <div class="app-topbar">
+               <div class="app-button back" data-back ="true">kikur</div>
+               <div class="app-button semiright" id="refresh"></div>
+               <div class="app-button right" id="kik"></div>
           </div>
 
-
-
-          <!-- Home Page -->
-          <div class="app-page" data-page="home">
-               <div class="app-topbar">
-                    <div class="app-button back" data-back ="true">kikur</div>
-                    <div class="app-button semiright" id="refresh"></div>
-                    <div class="app-button right" id="kik"></div>
+          <div class="app-content" data-no-scroll="true">
+               <div class="title-bar-container">
+                    <p class="title-bar-text"></p>
                </div>
 
-               <div class="app-content" data-no-scroll="true">
-                    <div class="title-bar-container"><p class="title-bar-text"></p></div>
-
-                    <div class="wrapper">
-                         <div class="app-section loader"></div>
-                    </div>
-
+               <div class="wrapper">
+                    <div class="app-section loader"></div>
                </div>
+
           </div>
+     </div>
 
-          <!-- Preview Page -->
-          <div class="app-page" data-page="preview">
-               <div class="app-topbar">
-                    <div class="app-title"></div>
-                    <div class="app-button back" data-back ="true">kikur</div>
-                    <div class="app-button right" id="kik"></div>
+     <!-- Preview Page -->
+     <div class="app-page" data-page="preview">
+          <div class="app-topbar">
+               <div class="app-title"></div>
+               <div class="app-button back" data-back ="true">kikur</div>
+               <div class="app-button right" id="kik"></div>
 
-                    <div class="preview-title-container">
-                         <p class="preview-title"></p>
-                    </div>
-
+               <div class="preview-title-container">
+                    <p class="preview-title"></p>
                </div>
-               <div class="app-content">
-               </div>
+
           </div>
+          <div class="app-content"></div>
+     </div>
 
      <!-- Javascripts -->
      <script src="http://cdn.kik.com/cards/0/cards.js"></script>
@@ -98,13 +99,13 @@
 
 
      <script>
-App.setDefaultTransition({
-  ios             : 'fade' , // iOS
-  iosFallback     : 'instant' , // iOS <5
-  android         : 'fade' , // Android
-  androidFallback : 'instant' , // Android < 4
-  fallback        : 'explode-in'   // non-iOS, non-Android
-});
+     App.setDefaultTransition({
+          ios             : 'fade' , 
+          iosFallback     : 'instant' , 
+          android         : 'fade' ,
+          androidFallback : 'instant' ,
+          fallback        : 'explode-in'
+     });
      
 
      if(cards.browser){
@@ -123,5 +124,5 @@ App.setDefaultTransition({
           App.load('selector');
      }
      </script>
-     </body>
+</body>
 </html>
