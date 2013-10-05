@@ -7,6 +7,7 @@ css/ios.css
 css/android.css
 # /zerver
 
+# Update manifest
 http://cdn.kik.com/cards/0/cards.js
 
 # zerver:js/main.min.js
